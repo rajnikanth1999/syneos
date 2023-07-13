@@ -16,7 +16,7 @@ print("acquiring all the blobs from containers of data lake")
 for container in containers:
     container_name = container.name
     print("Looking in -> ", container_name)
-    container_client = blob_service_client.find_blobs(container_name, prefix="", name_ends_with=".parquet")
+    container_client = blob_service_client.get_blob_client(container=container_name, blob=blob_path)
 
     for blob in container_client.list_blobs():
         blob_path = blob.name
